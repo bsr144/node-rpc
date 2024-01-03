@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package user;
+
+// The user management service definition.
+service UserManager {
+  rpc CreateUser (UserRequest) returns (UserResponse) {}
+  rpc GetUser (UserQuery) returns (UserResponse) {}
+  rpc ListUsers (Empty) returns (UserList) {}
+}
+
+message UserRequest {
+  string name = 1;
+  int32 age = 2;
+  string email = 3;
+}
+
+message UserResponse {
+  string id = 1;
+  string name = 2;
+  int32 age = 3;
+  string email = 4;
+  string status = 5; 
+}
+
+message UserQuery {
+  string id = 1;
+}
+
+message UserList {
+  repeated UserResponse users = 1;
+}
+
+message Empty {}
